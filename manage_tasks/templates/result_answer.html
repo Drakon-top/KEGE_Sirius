@@ -1,0 +1,28 @@
+{% extends "task_main.html" %}
+{% block content %}
+<table>
+    <tr>
+        <td>Имя варианта</td>
+        {% for item in names %}
+        <td>{{ item }}</td>
+        {% endfor %}
+        <td>Итого</td>
+    </tr>
+    {% for item in ans %}
+    <tr>
+        <td>{{ item.name }}</td>
+        {% for it in item.answers %}
+        <td>{{ it }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+    <td>{{ item.name }}</td>
+        {% for it in item.results %}
+        <td>{{ it }}</td>
+        {% endfor %}
+        <td>{{ item.itog }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

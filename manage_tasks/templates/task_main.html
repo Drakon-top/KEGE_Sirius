@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link crossorigin="anonymous"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+<div><a href="/tasks/logout">{{user.username}}</a></div>
+<div><a href="/tasks">Главная</a></div>
+{% else %}
+<div><a href="/tasks/login">Войдите в систему</a></div>
+{% endif %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+<a href="/tasks/logout">Выйти {{ user.username }}</a>
+<table>
+    <tr>
+        <td>Имя варианта</td>
+        <td>Описание варианта</td>
+    </tr>
+    {% for item in tasks %}
+    <tr>
+        <td><a href="add_answer">{{ item.title }}</a></td>
+        <td>{{ item.content }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="add_answer">Добавить ответ</a>
+{% else %}
+<a href="/tasks/login">Войти</a>
+{% endif %}
+{% endblock %}
+</body>
+</html>
