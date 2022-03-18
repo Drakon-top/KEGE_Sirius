@@ -10,7 +10,7 @@
 </head>
 <body>
 {% if user.is_authenticated %}
-<div><a href="/tasks/logout">{{user.username}}</a></div>
+<div><a href="/tasks/logout">Выйти {{user.username}}</a></div>
 <div><a href="/tasks">Главная</a></div>
 {% else %}
 <div><a href="/tasks/login">Войдите в систему</a></div>
@@ -18,7 +18,7 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-<a href="/tasks/logout">Выйти {{ user.username }}</a>
+<a href="result_answer">Мои ответы</a>
 <table>
     <tr>
         <td>Имя варианта</td>
@@ -32,8 +32,6 @@
     {% endfor %}
 </table>
 <a href="add_answer">Добавить ответ</a>
-{% else %}
-<a href="/tasks/login">Войти</a>
 {% endif %}
 {% endblock %}
 </body>

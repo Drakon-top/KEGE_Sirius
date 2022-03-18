@@ -111,8 +111,6 @@ class ResultView(TemplateView):
                 an = Ans(tasks.title, _list_ans, _list_res, count)
                 answer_li.append(an)
             ctx = {"ans": answer_li, "names": names}
-
-            print(ctx)
             return render(request, self.template_name, ctx)
         else:
             return render(request, self.template_name, {})
